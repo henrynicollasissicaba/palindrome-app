@@ -15,7 +15,7 @@ checkBtn.addEventListener('click', () => {
     }
 
     // remove all non-alphanumeric characters and convert to lower
-    const cleanText = text.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()
+    const cleanText = text.replace(/[^a-zA-Z0-9!-.:-?@[-`{-~]/g, "").toLowerCase()
     let reverseWord = ""
 
     for(i = cleanText.length - 1; i >= 0; i--){
