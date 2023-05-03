@@ -1,0 +1,130 @@
+:root{
+    --main-clr: #0061ff;
+    --white: #ffffff;
+    --black: #242629;
+
+    --red: #d00000;
+    --green: #40cc61;
+    --yellow: #ffd60a;
+
+    --bx-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, 
+        rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
+        rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background: var(--main-clr);
+}
+
+.container{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    padding: 2rem;
+    background-color: var(--white);
+    width: min(90%, 31.25rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-radius: .5rem;
+    box-shadow: var(--bx-shadow);
+}
+
+.app-title{
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+.app-description{
+    font-style: italic;
+    font-size: .875rem;
+    color: #565657;
+}
+
+.input-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+    margin-top: .5rem;
+}
+
+input{
+    border: none;
+    outline: none;
+}
+
+.word-input{
+    padding: .75rem .5rem .5rem 0;
+    border-bottom: 2px solid var(--black);
+    transition: .2s;
+    width: 68%;
+}
+
+.word-input:focus-within{
+    border-bottom: 2px solid var(--main-clr);
+}
+
+.check-btn{
+    width: 28%;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--white);
+    background-color: var(--main-clr);
+    border-radius: .5rem;
+    border: 2px solid transparent;
+    box-shadow: var(--bx-shadow);
+    cursor: pointer;
+    transition: .2s;
+}
+
+.check-btn:is(:hover, :focus){
+    background-color: var(--white);
+    border: 2px solid var(--main-clr);
+    color: var(--main-clr);
+}
+
+#result{
+    text-align: center;
+    color: var(--white);
+    border-radius: .5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.success,
+.fail,
+.alert{
+    padding: 1rem;
+    box-shadow: var(--bx-shadow);
+}
+
+.success{
+    background-color: var(--green);
+}
+
+.fail{
+    background-color: var(--red);
+}
+
+.alert{
+    background-color: var(--yellow);
+}
+
+@media(max-width: 33em){
+    .word-input, 
+    .check-btn{
+        width: 100%;
+    }
+}
