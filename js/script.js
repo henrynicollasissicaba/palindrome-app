@@ -36,7 +36,7 @@ const displayResult = (element, message, className) => {
 }
 
 const cleanTextInput = (text) => {
-    return text.replace(/[^a-za-z0-9]/g, "").toLowerCase()
+    return text.replace(/[^a-zA-Z0-9]/g, "").toLowerCase()
 }
 
 const checkPalindrome = (text) => {
