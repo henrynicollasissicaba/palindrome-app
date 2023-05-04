@@ -125,7 +125,7 @@ input{
 }
 
 @media(max-width: 33em){
-    .word-input, 
+    #word-input, 
     .check-btn{
         width: 100%;
     }
