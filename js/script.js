@@ -1,35 +1,50 @@
-// getting value from user
-const word = document.querySelector('.word-input')
+const word = document.querySelector('#word-input')
 const checkBtn = document.querySelector('.check-btn')
 const result = document.querySelector('#result')
 
-checkBtn.addEventListener('click', () => {    
-    const alertMessage = "Por favor, entre com uma palavra válida!"
-    // // remove whitespace from both ends of a string
-    const text = word.value.trim()
+checkBtn.addEventListener('click', () => {
+    const alertMessage = "Por favor, insira uma palavra válida."
 
+    //if the input value is empty, returns an alert message
     if(word.value.length === 0){
-        result.textContent = `${alertMessage}`
-        result.classList.add('alert')
+        displayResult(result, alertMessage, 'alert')
         return
     }
 
-    // remove all non-alphanumeric characters and convert to lower
-    const cleanText = text.replace(/[^a-zA-Z0-9!-.:-?@[-`{-~]/g, "").toLowerCase()
-    let reverseWord = ""
+    //Remove whitespace from both ends of a string and returns a new string, without modifying the original string.
+    const text = word.value.trim() 
 
-    for(i = cleanText.length - 1; i >= 0; i--){
-        reverseWord += cleanText[i]
-    }
+    const cleanText = cleanTextInput(text)
+    const isPalindrome = checkPalindrome(cleanText)
 
-    const isPalindrome = cleanText === reverseWord
     result.classList.remove('alert', 'success', 'fail')
 
+    //success and fail messages
+    const successMessage = `Sim! ${text} é um Palíndromo.`
+    const failMessage = `Não! ${text} não é um Palíndromo.`
+
     if(isPalindrome){
-        result.textContent = `Sim! ${text} é um palíndromo.`
-        result.classList.add('success')
+        displayResult(result, successMessage, 'success')
     } else {
-        result.textContent = `Não! ${text} não é um palíndromo.`
-        result.classList.add('fail')
+        displayResult(result, failMessage, 'fail')
     }
 })
+
+const displayResult = (element, message, className) => {
+    element.textContent = message
+    element.classList.add(className)
+}
+
+const cleanTextInput = (text) => {
+    return text.replace(/[^a-za-z0-9]/g, "").toLowerCase()
+}
+
+const checkPalindrome = (text) => {
+    let reverseWord = ""
+
+    for(let i = text.length - 1; i >= 0; i--){
+        reverseWord += text[i]
+    }
+
+    return text === reverseWord
+}
